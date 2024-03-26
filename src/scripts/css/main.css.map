@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"main.css"}
+{"version":3,"sources":["../sass/_gameBoard.scss","../sass/_variables.scss","main.css","../sass/_food.scss","../sass/_snake.scss","../sass/main.scss"],"names":[],"mappings":"AAAA;EACE,iCAAA;EACA,YCFe;EDGf,aCHe;EDIf,2BAAA;EACA,kBAAA;AECF;;ACNA;EACE,2BAAA;EACA,kBAAA;EACA,oCAAA;ADSF;;AEZA;EACE,2BAAA;EACA,kBAAA;EACA,oCAAA;AFeF;;AGbA;EACE,iBAAA;EACA,aAAA;EACA,qBAAA;EACA,kBAAA;AHgBF","file":"main.css"}

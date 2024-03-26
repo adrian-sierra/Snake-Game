@@ -1,1 +1,26 @@
-/*# sourceMappingURL=main.css.map */
+#gameBoard {
+  background-color: hsl(0, 0%, 60%);
+  width: 400px;
+  height: 400px;
+  box-shadow: 0 0 0 2px black;
+  position: relative;
+}
+
+#food {
+  box-shadow: 0 0 0 2px black;
+  position: absolute;
+  background-color: hsl(145, 25%, 45%);
+}
+
+#snake {
+  box-shadow: 0 0 0 2px black;
+  position: absolute;
+  background-color: hsl(180, 25%, 45%);
+}
+
+body {
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  overflow-y: hidden;
+}/*# sourceMappingURL=main.css.map */
