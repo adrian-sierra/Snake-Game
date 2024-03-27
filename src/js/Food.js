@@ -2,8 +2,6 @@ import transformIntoPixels from "./functions.js";
 
 class Food {
   constructor(cellSize) {
-    // console.log("size of board = " + Math.pow(size, 2));
-    let sizeOfBoard = Math.pow(cellSize, 2);
     this.cellSize = cellSize;
 
     this.position = {
@@ -12,6 +10,10 @@ class Food {
     };
   }
   draw(gameBoard) {
+    let previousFoods = document.querySelectorAll("#food");
+    previousFoods.forEach((food) => {
+      gameBoard.removeChild(food);
+    });
     let foodElement = document.createElement("div");
     foodElement.setAttribute("id", "food");
     foodElement.style.height = foodElement.style.width = transformIntoPixels(
@@ -24,7 +26,12 @@ class Food {
       this.position.y * this.cellSize
     );
     gameBoard.appendChild(foodElement);
-    // console.log(this.position.x * this.size);
+  }
+  randomPosition() {
+    this.position = {
+      x: Math.floor(Math.random() * (this.cellSize - 0) + 0),
+      y: Math.floor(Math.random() * (this.cellSize - 0) + 0),
+    };
   }
 }
 export default Food;
