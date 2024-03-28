@@ -1,4 +1,4 @@
-import transformIntoPixels from "./functions.js";
+import transformIntoPixels, { isSnakeFoodIntersecting } from "./functions.js";
 
 class Food {
   constructor(cellSize) {
@@ -27,11 +27,27 @@ class Food {
     );
     gameBoard.appendChild(foodElement);
   }
-  randomPosition() {
-    this.position = {
+  randomPosition(snakeParts) {
+    // while (isSnakeFoodIntersecting(snake, food)) {
+    //     food.position = {
+    //       x: Math.floor(Math.random() * (cellSize - 0) + 0),
+    //       y: Math.floor(Math.random() * (cellSize - 0) + 0),
+    //     };
+    //   }
+    let position = {
       x: Math.floor(Math.random() * (this.cellSize - 0) + 0),
       y: Math.floor(Math.random() * (this.cellSize - 0) + 0),
     };
+
+    snakeParts.forEach((part) => {
+      while (isSnakeFoodIntersecting(part, position)) {
+        position = {
+          x: Math.floor(Math.random() * (this.cellSize - 0) + 0),
+          y: Math.floor(Math.random() * (this.cellSize - 0) + 0),
+        };
+      }
+    });
+    this.position = position;
   }
 }
 export default Food;

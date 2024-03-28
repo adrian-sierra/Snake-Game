@@ -5,7 +5,7 @@ import { isSnakeFoodIntersecting } from "./functions.js";
 
 let gameBoard = document.getElementById("gameBoard");
 let cellSize = Math.sqrt(gameBoard.offsetWidth);
-let gameSpeed = 150;
+let gameSpeed = 1000;
 
 let snake = new Snake(cellSize);
 snake.draw(gameBoard);
@@ -20,25 +20,44 @@ while (isSnakeFoodIntersecting(snake, food)) {
 food.draw(gameBoard);
 
 setInterval(() => {
-  food.draw(gameBoard);
-  if (isSnakeFoodIntersecting(snake, food)) {
-    food.randomPosition();
-    food.draw(gameBoard);
-    snake.length++;
-    // snake.snakeParts.push({ x: snake.position.x, y: snake.position.y });
-  }
-  window.onkeydown = (e) => {
-    snake.move(e.keyCode);
-  };
-  if (
-    snake.position.y >= 0 &&
-    snake.position.y < cellSize &&
-    snake.position.x >= 0 &&
-    snake.position.x < cellSize
-  ) {
+  if (snake.isWithinBounds() && snake.isNotIntersectingSelf()) {
     snake.draw(gameBoard);
   } else {
     if (alert("Game over! Your score: " + snake.length)) {
     } else window.location.reload();
   }
+  food.draw(gameBoard);
+  if (isSnakeFoodIntersecting(snake, food)) {
+    snake.length++;
+
+    food.randomPosition(snake.snakeParts);
+    food.draw(gameBoard);
+  }
+  window.onkeydown = (e) => {
+    switch (e.keyCode) {
+      // valid input check based on what the current direction of the snake is
+      case 37:
+        if (snake.direction != "right") {
+          snake.move(e.keyCode);
+        }
+        break;
+      case 39:
+        if (snake.direction != "left") {
+          snake.move(e.keyCode);
+        }
+        break;
+      case 38:
+        if (snake.direction != "down") {
+          snake.move(e.keyCode);
+        }
+        break;
+      case 40:
+        if (snake.direction != "up") {
+          snake.move(e.keyCode);
+        }
+        break;
+      default:
+        break;
+    }
+  };
 }, gameSpeed);

@@ -1,4 +1,4 @@
-import transformIntoPixels from "./functions.js";
+import transformIntoPixels, { isSnakeFoodIntersecting } from "./functions.js";
 
 class Snake {
   constructor(size) {
@@ -9,11 +9,19 @@ class Snake {
       y: sizeOfBoard / 2 / this.size,
     };
     this.length = 1;
-    // this.snakeParts = [{ x: this.position.x, y: this.position.y }];
+    this.snakeParts = [{}];
     this.direction = "up";
   }
   draw(gameBoard) {
-    // console.log(this.position);
+    // using snake elements under gameBoard parent to determine the posisions of the snakeParts
+    let snakeList = document.querySelectorAll("#snake");
+    snakeList.forEach((snakeElement, index) => {
+      this.snakeParts[index] = {
+        x: snakeElement.offsetLeft / this.size,
+        y: snakeElement.offsetTop / this.size,
+      };
+    });
+
     let previousSnakes = document.querySelectorAll("#snake");
     for (let i = 0; i < previousSnakes.length - (this.length - 1); i++) {
       gameBoard.removeChild(previousSnakes[i]);
@@ -44,6 +52,7 @@ class Snake {
     gameBoard.appendChild(snakeElement);
   }
   move(key) {
+    // simply change direction to match the arrow that was pressed
     switch (key) {
       case 37:
         this.direction = "left";
@@ -60,6 +69,28 @@ class Snake {
       default:
         break;
     }
+  }
+  isWithinBounds() {
+    return (
+      this.position.y >= 0 &&
+      this.position.y < this.size &&
+      this.position.x >= 0 &&
+      this.position.x < this.size
+    );
+  }
+  isNotIntersectingSelf() {
+    // time complexity of O(n)
+    for (let i = 1; i < this.snakeParts.length; i++) {
+      //   console.log("i: " + i);
+      //   console.log(this.snakeParts[i].x, this.snakeParts[i].y);
+      if (
+        this.snakeParts[0].x === this.snakeParts[i].x &&
+        this.snakeParts[0].y === this.snakeParts[i].y
+      ) {
+        return false;
+      }
+    }
+    return true;
   }
 }
 export default Snake;
