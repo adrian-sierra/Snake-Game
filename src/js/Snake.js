@@ -1,4 +1,4 @@
-import transformIntoPixels, { isSnakeFoodIntersecting } from "./functions.js";
+import transformIntoPixels, { isObjectIntersecting } from "./functions.js";
 
 class Snake {
   constructor(size) {
@@ -10,18 +10,35 @@ class Snake {
     };
     this.length = 1;
     this.snakeParts = [{}];
+    this.snakeHash = {};
     this.direction = "up";
   }
-  draw(gameBoard) {
-    // using snake elements under gameBoard parent to determine the posisions of the snakeParts
+  fillSnakeParts() {
     let snakeList = document.querySelectorAll("#snake");
+    // implemeting a dict to help with checking if snake has ran into itself
+    // will reset the hash every time we are filling the snakeParts array so
+    // they are equal
+    this.snakeHash = {};
     snakeList.forEach((snakeElement, index) => {
       this.snakeParts[index] = {
         x: snakeElement.offsetLeft / this.size,
         y: snakeElement.offsetTop / this.size,
       };
+      // since the check is if the head of the snake (index 0 of snakeParts) is
+      // intersecting with rest of positions in dict, we can skip this index
+      if (index !== 0) {
+        this.snakeHash[JSON.stringify(this.snakeParts[index])] = 1;
+      }
     });
-
+  }
+  draw(gameBoard) {
+    // using snake elements under gameBoard parent to determine the posisions of the snakeParts
+    this.fillSnakeParts();
+    // this handles removing snake elements from gameBoard in accordance to the
+    // length of the snake. Essentially "limiting" the snake elements to match the length
+    // of the current snake. If we didn't have this, the logic below is to add a snake
+    // cell to the gameBoard, so we would just continue to draw snakes without "clearing"
+    // the ones we are not concerned with, which would be the ones up to snake length
     let previousSnakes = document.querySelectorAll("#snake");
     for (let i = 0; i < previousSnakes.length - (this.length - 1); i++) {
       gameBoard.removeChild(previousSnakes[i]);
@@ -31,6 +48,9 @@ class Snake {
     snakeElement.style.height = snakeElement.style.width = transformIntoPixels(
       this.size
     );
+    // want to update the position according to the current direction of the snake every
+    // time we are drawing the snake (effect of continuous movement)
+    // switch statement to handle appropriate cases
     switch (this.direction) {
       case "up":
         this.position.y--;
@@ -79,18 +99,11 @@ class Snake {
     );
   }
   isNotIntersectingSelf() {
-    // time complexity of O(n)
-    for (let i = 1; i < this.snakeParts.length; i++) {
-      //   console.log("i: " + i);
-      //   console.log(this.snakeParts[i].x, this.snakeParts[i].y);
-      if (
-        this.snakeParts[0].x === this.snakeParts[i].x &&
-        this.snakeParts[0].y === this.snakeParts[i].y
-      ) {
-        return false;
-      }
-    }
-    return true;
+    // simple implementation where we return whether the head position
+    // of the snake is already in the dict
+    let snakeHead = this.snakeParts[0];
+    // console.log(this.snakeHash[JSON.stringify(snakeHead)]);
+    return !this.snakeHash[JSON.stringify(snakeHead)];
   }
 }
 export default Snake;

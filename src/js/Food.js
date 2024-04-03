@@ -10,6 +10,7 @@ class Food {
     };
   }
   draw(gameBoard) {
+    // remove any previous food elements in document object
     let previousFoods = document.querySelectorAll("#food");
     previousFoods.forEach((food) => {
       gameBoard.removeChild(food);
@@ -27,27 +28,25 @@ class Food {
     );
     gameBoard.appendChild(foodElement);
   }
-  randomPosition(snakeParts) {
-    // while (isSnakeFoodIntersecting(snake, food)) {
-    //     food.position = {
-    //       x: Math.floor(Math.random() * (cellSize - 0) + 0),
-    //       y: Math.floor(Math.random() * (cellSize - 0) + 0),
-    //     };
-    //   }
-    let position = {
+
+  randomPosition(snake) {
+    // this random position method will be passed the snake object
+    // it will do a check to ensure that the new x,y position is
+    // not already a part in snakeHash
+    let positionObject = {
       x: Math.floor(Math.random() * (this.cellSize - 0) + 0),
       y: Math.floor(Math.random() * (this.cellSize - 0) + 0),
     };
+    // console.log(JSON.stringify(positionObject));
+    while (snake.snakeHash[JSON.stringify(positionObject)]) {
+      positionObject.x = Math.floor(Math.random() * (this.cellSize - 0) + 0);
+      positionObject.y = Math.floor(Math.random() * (this.cellSize - 0) + 0);
+    }
 
-    snakeParts.forEach((part) => {
-      while (isSnakeFoodIntersecting(part, position)) {
-        position = {
-          x: Math.floor(Math.random() * (this.cellSize - 0) + 0),
-          y: Math.floor(Math.random() * (this.cellSize - 0) + 0),
-        };
-      }
-    });
-    this.position = position;
+    this.position = {
+      x: positionObject.x,
+      y: positionObject.y,
+    };
   }
 }
 export default Food;
