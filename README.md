@@ -1,1 +1,1 @@
-Starter snake game in vanilla js.
+Simple OOP Snake Game built in vanilla JavaScript.
