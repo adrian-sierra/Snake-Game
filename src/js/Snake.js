@@ -1,4 +1,4 @@
-import transformIntoPixels, { isObjectIntersecting } from "./functions.js";
+import transformIntoPixels from "./functions.js";
 
 class Snake {
   constructor(size) {
