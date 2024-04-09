@@ -1,10 +1,15 @@
+@import "./attributes";
 @import "./variables";
 @import "./gameBoard";
 @import "./food";
 @import "./snake";
+@import "./title";
+@import "./controls";
+@import "./menu";
 
 body {
-  min-height: 100vh;
+  font-family: $fontFamily;
+  // min-height: 100vh;
   display: grid;
   place-content: center;
   overflow-y: hidden;

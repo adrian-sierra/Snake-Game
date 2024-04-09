@@ -1,9 +1,17 @@
+.hide {
+  display: none;
+}
+
 #gameBoard {
   background-color: hsl(0, 0%, 60%);
+  background-position: center;
+  background-size: cover;
   width: 400px;
   height: 400px;
-  box-shadow: 0 0 0 2px black;
+  box-shadow: 0 0 0 5px black;
   position: relative;
+  display: grid;
+  place-content: center;
 }
 
 #food {
@@ -18,8 +26,81 @@
   background-color: hsl(180, 25%, 45%);
 }
 
+.game-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-top: 7.5vh;
+  margin-bottom: 3.5rem;
+}
+
+.controls {
+  display: grid;
+  margin-top: 2.5rem;
+  place-items: center;
+  gap: 0.325rem;
+}
+.controls .middle-row {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 0.325rem;
+}
+.controls__button {
+  height: 45px;
+  width: 45px;
+  background-color: hsl(0, 0%, 60%);
+  border: 0;
+  border: 3.5px solid black;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+.controls__button .arrow {
+  height: 25px;
+  width: 25px;
+}
+.controls #button-up:hover,
+.controls #button-right:hover,
+.controls #button-down:hover,
+.controls #button-left:hover {
+  cursor: pointer;
+}
+.controls #button-down:hover {
+  transform: scale(1.0315);
+}
+.controls #button-up {
+  transform: rotate(180deg);
+}
+.controls #button-up:hover {
+  transform: rotate(180deg) scale(1.0315);
+}
+.controls #button-right {
+  transform: rotate(270deg);
+}
+.controls #button-right:hover {
+  transform: rotate(270deg) scale(1.0315);
+}
+.controls #button-left {
+  transform: rotate(90deg);
+}
+.controls #button-left:hover {
+  transform: rotate(90deg) scale(1.0315);
+}
+
+.menu {
+  text-align: center;
+  font-size: 1.5rem;
+}
+.menu__option {
+  cursor: pointer;
+  position: relative;
+}
+.menu__option:hover {
+  transform: scale(1.15);
+}
+
 body {
-  min-height: 100vh;
+  font-family: "Bungee", sans-serif;
   display: grid;
   place-content: center;
   overflow-y: hidden;

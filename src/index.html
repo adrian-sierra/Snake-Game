@@ -3,11 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bungee&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./scripts/css/main.css" />
     <script src="./js/Game.js" type="module" defer></script>
     <title>Snake</title>
   </head>
   <body>
-    <div id="gameBoard"></div>
+    <div id="title" class="game-title">SNAKE</div>
+    <div id="gameBoard">
+      <div class="menu">
+        <p class="menu__option" id="start-button"><span>START</span></p>
+        <p class="menu__option" id="settigns-buttons">SETTINGS</p>
+      </div>
+    </div>
+    <div class="controls">
+      <div class="top-row button-row">
+        <button class="controls__button" id="button-up">
+          <img src="./images/arrow.png" alt="" class="arrow" />
+        </button>
+      </div>
+      <div class="middle-row button-row">
+        <button class="controls__button" id="button-left">
+          <img src="./images/arrow.png" alt="" class="arrow" />
+        </button>
+        <button class="controls__button"></button>
+        <button class="controls__button" id="button-right">
+          <img src="./images/arrow.png" alt="" class="arrow" />
+        </button>
+      </div>
+      <div class="bottom-row button-row">
+        <button class="controls__button" id="button-down">
+          <img src="./images/arrow.png" alt="" class="arrow" />
+        </button>
+      </div>
+    </div>
   </body>
 </html>

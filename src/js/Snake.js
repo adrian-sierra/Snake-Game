@@ -1,4 +1,4 @@
-import transformIntoPixels from "./functions.js";
+import transformIntoPixels, { randomDirection } from "./functions.js";
 
 class Snake {
   constructor(size) {
@@ -11,7 +11,7 @@ class Snake {
     this.length = 1;
     this.snakeParts = [{}];
     this.snakeHash = {};
-    this.direction = "up";
+    this.direction = randomDirection();
   }
   fillSnakeParts() {
     let snakeList = document.querySelectorAll("#snake");
@@ -99,6 +99,8 @@ class Snake {
     );
   }
   isNotIntersectingSelf() {
+    // TODO - make much faster
+
     // simple implementation where we return whether the head position
     // of the snake is already in the dict
     let snakeHead = this.snakeParts[0];

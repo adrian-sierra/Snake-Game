@@ -1,7 +1,12 @@
 #gameBoard {
   background-color: hsl(0, 0%, 60%);
+  // background-image: url("../../images/background-light.jpg");
+  background-position: center;
+  background-size: cover;
   width: $boardDimension;
   height: $boardDimension;
-  box-shadow: 0 0 0 2px black;
+  box-shadow: 0 0 0 5px black;
   position: relative;
+  display: grid;
+  place-content: center;
 }

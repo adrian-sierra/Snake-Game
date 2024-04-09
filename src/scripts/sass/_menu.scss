@@ -1,0 +1,13 @@
+.menu {
+  text-align: center;
+  font-size: 1.5rem;
+
+  &__option {
+    cursor: pointer;
+    position: relative;
+
+    &:hover {
+      transform: scale(1.15);
+    }
+  }
+}
