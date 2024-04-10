@@ -98,6 +98,47 @@
   transform: scale(1.15);
 }
 
+.settings-form:not(.hide) {
+  display: grid;
+  gap: 1rem;
+}
+
+.settings-form {
+  font-size: 1.125rem;
+}
+.settings-form__input {
+  display: grid;
+  gap: 0.25rem;
+}
+.settings-form__input .radio-input {
+  display: flex;
+}
+.settings-form__buttons {
+  padding-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: space-evenly;
+}
+.settings-form__buttons .form-button {
+  cursor: pointer;
+  border: 0;
+  padding: 0.5rem 1rem;
+  border-radius: 15px;
+  text-transform: uppercase;
+  font-family: "Bungee", sans-serif;
+  letter-spacing: 1px;
+  box-shadow: 0 0 0 2px black;
+}
+.settings-form__buttons .form-button:hover {
+  transform: scale(1.05);
+}
+.settings-form__buttons .form-apply-button {
+  background-color: hsl(200, 100%, 65%);
+}
+.settings-form__buttons .form-cancel-button {
+  background-color: white;
+}
+
 body {
   font-family: "Bungee", sans-serif;
   display: grid;

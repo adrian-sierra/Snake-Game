@@ -9,12 +9,8 @@ export function isSnakeFoodIntersecting(snake, food) {
     snake.position.x === food.position.x && snake.position.y === food.position.y
   );
 }
-// export function isObjectIntersecting(objOne, objTwo) {
-//   //   console.log("object one: " + objOne.x + " " + objOne.y);
-//   //   console.log("object two: " + objTwo.x + " " + objTwo.y);
-//   return objOne.x === objTwo.x && objOne.y === objTwo.y;
-// }
 
+// for Snake object
 export function randomDirection() {
   switch (Math.floor(Math.random() * (5 - 1) + 1)) {
     case 4:

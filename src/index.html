@@ -15,32 +15,78 @@
   </head>
   <body>
     <div id="title" class="game-title">SNAKE</div>
-    <div id="gameBoard">
-      <div class="menu">
-        <p class="menu__option" id="start-button"><span>START</span></p>
-        <p class="menu__option" id="settigns-buttons">SETTINGS</p>
+    <div class="game">
+      <div id="gameBoard">
+        <div class="menu hide">
+          <p class="menu__option" id="start-button">START</p>
+          <p class="menu__option" id="settings-button">SETTINGS</p>
+        </div>
+        <div class="settings-container" id="settings">
+          <form class="settings-form" action="#">
+            <div class="settings-form__input">
+              <label for="">Game Speed</label>
+              <div class="radio-input">
+                <div class="radio-group">
+                  <input type="radio" value="slow" name="gameSpeed" />
+                  <label for="gameSpeed">Slow</label>
+                </div>
+                <div class="radio-group">
+                  <input type="radio" value="regular" name="gameSpeed" />
+                  <label for="gameSpeed">Regular</label>
+                </div>
+                <div class="radio-group">
+                  <input type="radio" value="fast" name="gameSpeed" />
+                  <label for="gameSpeed">Fast</label>
+                </div>
+              </div>
+            </div>
+            <div class="settings-form__input">
+              <label for="">Growing Rate</label>
+              <input type="number" min="1" max="5" />
+            </div>
+            <div class="settings-form__input">
+              <label for="">Food Color</label>
+              <input type="color" />
+            </div>
+            <div class="settings-form__input">
+              <label for="">Snake Color</label>
+              <input type="color" />
+            </div>
+            <div class="settings-form__buttons">
+              <button class="form-apply-button form-button" id="apply-button">
+                Apply
+              </button>
+              <button class="form-cancel-button form-button" id="cancel-button">
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
-    <div class="controls">
-      <div class="top-row button-row">
-        <button class="controls__button" id="button-up" value="up">
-          <!-- <img src="./images/arrow.png" alt="" class="arrow" /> -->
-        </button>
-      </div>
-      <div class="middle-row button-row">
-        <button class="controls__button" id="button-left" value="left">
-          <!-- <img src="./images/arrow.png" alt="" class="arrow" /> -->
-        </button>
-        <!-- <button class="controls__button"></button> -->
-        <div class="fake-button"></div>
-        <button class="controls__button" id="button-right" value="right">
-          <!-- <img src="./images/arrow.png" alt="" class="arrow" /> -->
-        </button>
-      </div>
-      <div class="bottom-row button-row">
-        <button class="controls__button" id="button-down" value="down">
-          <!-- <img src="./images/arrow.png" alt="" class="arrow" /> -->
-        </button>
+      <div class="controls">
+        <div class="top-row button-row">
+          <button class="controls__button" id="button-up" value="up"></button>
+        </div>
+        <div class="middle-row button-row">
+          <button
+            class="controls__button"
+            id="button-left"
+            value="left"
+          ></button>
+          <div class="fake-button"></div>
+          <button
+            class="controls__button"
+            id="button-right"
+            value="right"
+          ></button>
+        </div>
+        <div class="bottom-row button-row">
+          <button
+            class="controls__button"
+            id="button-down"
+            value="down"
+          ></button>
+        </div>
       </div>
     </div>
   </body>

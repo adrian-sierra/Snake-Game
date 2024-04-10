@@ -122,6 +122,8 @@ class Snake {
     // simple implementation where we return whether the head position
     // of the snake is already in the dict
     let snakeHead = this.snakeParts[0];
+
+    console.log(JSON.stringify(snakeHead));
     // console.log(this.snakeHash[JSON.stringify(snakeHead)]);
     return !this.snakeHash[JSON.stringify(snakeHead)];
   }

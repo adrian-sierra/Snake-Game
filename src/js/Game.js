@@ -5,12 +5,14 @@ import { isSnakeFoodIntersecting } from "./functions.js";
 
 const gameMenu = document.querySelector(".menu");
 const startButton = document.getElementById("start-button");
+const settingsButton = document.getElementById("settings-button");
+const settingsMenu = document.getElementById("settings");
 const controlButtons = document.querySelectorAll(".controls__button");
 
 function startGame() {
   let gameBoard = document.getElementById("gameBoard");
   let cellSize = Math.sqrt(gameBoard.offsetWidth);
-  let gameSpeed = 100;
+  let gameSpeed = 500;
   let growingRate = 5;
 
   const snake = new Snake(cellSize);
@@ -29,7 +31,7 @@ function startGame() {
     if (isSnakeFoodIntersecting(snake, food)) {
       snake.length += growingRate;
 
-      food.removePreviousFoodlements();
+      food.removePreviousFoodElements();
       food.randomPosition(snake);
       food.draw(gameBoard);
     }
@@ -74,4 +76,27 @@ function startGame() {
 startButton.addEventListener("click", () => {
   gameMenu.classList.add("hide");
   startGame();
+});
+
+function settings() {
+  const applyButton = document.getElementById("apply-button");
+  const cancelButton = document.getElementById("cancel-button");
+
+  function handleApplyClick(e) {
+    e.preventDefault();
+  }
+
+  function handleCancelClick() {
+    gameMenu.classList.remove("hide");
+    settingsMenu.classList.add("hide");
+  }
+
+  applyButton.addEventListener("click", handleApplyClick);
+  cancelButton.addEventListener("click", handleCancelClick);
+}
+
+settingsButton.addEventListener("click", () => {
+  gameMenu.classList.add("hide");
+  settingsMenu.classList.remove("hide");
+  settings();
 });

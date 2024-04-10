@@ -1,0 +1,44 @@
+.settings-form:not(.hide) {
+  display: grid;
+  gap: 1rem;
+}
+
+.settings-form {
+  //   text-align: center;
+  font-size: 1.125rem;
+
+  &__input {
+    display: grid;
+    gap: 0.25rem;
+
+    .radio-input {
+      display: flex;
+    }
+  }
+  &__buttons {
+    padding-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: space-evenly;
+
+    .form-button {
+      cursor: pointer;
+      border: 0;
+      padding: 0.5rem 1rem;
+      border-radius: 15px;
+      text-transform: uppercase;
+      font-family: $fontFamily;
+      letter-spacing: 1px;
+      box-shadow: 0 0 0 2px black;
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+    .form-apply-button {
+      background-color: hsl(200, 100%, 65%);
+    }
+    .form-cancel-button {
+      background-color: white;
+    }
+  }
+}
