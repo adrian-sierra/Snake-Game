@@ -31,9 +31,8 @@ class Snake {
       }
     });
   }
-  draw(gameBoard) {
+  removePreviousSnakeElements() {
     // using snake elements under gameBoard parent to determine the posisions of the snakeParts
-    this.fillSnakeParts();
     // this handles removing snake elements from gameBoard in accordance to the
     // length of the snake. Essentially "limiting" the snake elements to match the length
     // of the current snake. If we didn't have this, the logic below is to add a snake
@@ -43,11 +42,8 @@ class Snake {
     for (let i = 0; i < previousSnakes.length - (this.length - 1); i++) {
       gameBoard.removeChild(previousSnakes[i]);
     }
-    let snakeElement = document.createElement("div");
-    snakeElement.setAttribute("id", "snake");
-    snakeElement.style.height = snakeElement.style.width = transformIntoPixels(
-      this.size
-    );
+  }
+  updatedSnakePosition() {
     // want to update the position according to the current direction of the snake every
     // time we are drawing the snake (effect of continuous movement)
     // switch statement to handle appropriate cases
@@ -67,6 +63,15 @@ class Snake {
       default:
         break;
     }
+  }
+  draw(gameBoard) {
+    this.updatedSnakePosition();
+
+    let snakeElement = document.createElement("div");
+    snakeElement.setAttribute("id", "snake");
+    snakeElement.style.height = snakeElement.style.width = transformIntoPixels(
+      this.size
+    );
     snakeElement.style.left = transformIntoPixels(this.position.x * this.size);
     snakeElement.style.top = transformIntoPixels(this.position.y * this.size);
     gameBoard.appendChild(snakeElement);
@@ -75,16 +80,29 @@ class Snake {
     // simply change direction to match the arrow that was pressed
     switch (key) {
       case 37:
-        this.direction = "left";
+      case "left":
+        if (this.direction != "right") {
+          this.direction = "left";
+        }
         break;
+
       case 39:
-        this.direction = "right";
+      case "right":
+        if (this.direction != "left") {
+          this.direction = "right";
+        }
         break;
       case 38:
-        this.direction = "up";
+      case "up":
+        if (this.direction != "down") {
+          this.direction = "up";
+        }
         break;
       case 40:
-        this.direction = "down";
+      case "down":
+        if (this.direction != "up") {
+          this.direction = "down";
+        }
         break;
       default:
         break;

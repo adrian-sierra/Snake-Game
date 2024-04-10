@@ -5,87 +5,73 @@ import { isSnakeFoodIntersecting } from "./functions.js";
 
 const gameMenu = document.querySelector(".menu");
 const startButton = document.getElementById("start-button");
+const controlButtons = document.querySelectorAll(".controls__button");
 
-let gameBoard = document.getElementById("gameBoard");
-let cellSize = Math.sqrt(gameBoard.offsetWidth);
-let gameSpeed = 200;
-let growingRate = 5;
+function startGame() {
+  let gameBoard = document.getElementById("gameBoard");
+  let cellSize = Math.sqrt(gameBoard.offsetWidth);
+  let gameSpeed = 100;
+  let growingRate = 5;
 
-function initSnake(cellSize, gameBoard) {
-  let snake = new Snake(cellSize);
-  snake.draw(gameBoard);
-  return snake;
-}
-function initFood(cellSize, gameBoard, snake) {
-  let food = new Food(cellSize);
-  // initial check to ensure we are not drawing food object in
-  // same position as snake object
-  while (isSnakeFoodIntersecting(snake, food)) {
-    food.position = {
-      x: Math.floor(Math.random() * (cellSize - 0) + 0),
-      y: Math.floor(Math.random() * (cellSize - 0) + 0),
-    };
-  }
-  food.draw(gameBoard);
-  return food;
-}
+  const snake = new Snake(cellSize);
+  const food = new Food(cellSize);
 
-// setInterval serves as the game loop for this app
-function start() {
-  const snake = initSnake(cellSize, gameBoard);
-  const food = initFood(cellSize, gameBoard, snake);
-  setInterval(() => {
-    // check that snake object is still within bounds of the gameBoard
-    // and it is not intersecting itself
-    // console.log(snake.isNotIntersectingSelf());
+  function gameLoop() {
+    food.removePreviousFoodElements();
+    food.draw(gameBoard);
     if (snake.isWithinBounds() && snake.isNotIntersectingSelf()) {
+      snake.removePreviousSnakeElements();
       snake.draw(gameBoard);
+      snake.fillSnakeParts();
     } else {
-      // send alert if snake is outside of bounds or it is intersecting itself
-      if (alert("Game over! Your score: " + snake.length)) {
-      } else window.location.reload();
+      endGame();
     }
-    // if the snake object "eats" the food object, we will increase its length
-    // based on the growing rate and redraw food to random position
     if (isSnakeFoodIntersecting(snake, food)) {
       snake.length += growingRate;
 
+      food.removePreviousFoodlements();
       food.randomPosition(snake);
       food.draw(gameBoard);
     }
-    // properly account for keyboard input from user
-    window.onkeydown = (e) => {
-      switch (e.keyCode) {
-        // valid input check based on what the current direction of the snake is
-        case 37:
-          if (snake.direction != "right") {
-            snake.move(e.keyCode);
-          }
-          break;
-        case 39:
-          if (snake.direction != "left") {
-            snake.move(e.keyCode);
-          }
-          break;
-        case 38:
-          if (snake.direction != "down") {
-            snake.move(e.keyCode);
-          }
-          break;
-        case 40:
-          if (snake.direction != "up") {
-            snake.move(e.keyCode);
-          }
-          break;
-        default:
-          break;
-      }
-    };
-  }, gameSpeed);
+  }
+
+  function handleControlButtonClick(e) {
+    snake.move(e.target.value);
+  }
+
+  function handleKeyPress(e) {
+    switch (e.keyCode) {
+      case 37:
+        snake.move(e.keyCode);
+        break;
+      case 39:
+        snake.move(e.keyCode);
+        break;
+      case 38:
+        snake.move(e.keyCode);
+        break;
+      case 40:
+        snake.move(e.keyCode);
+        break;
+      default:
+        break;
+    }
+  }
+
+  function endGame() {
+    // send alert if snake is outside of bounds or it is intersecting itself
+    if (alert("Game over! Your score: " + snake.length)) {
+    } else window.location.reload();
+  }
+
+  controlButtons.forEach((button) =>
+    button.addEventListener("click", handleControlButtonClick)
+  );
+  document.addEventListener("keydown", handleKeyPress);
+  setInterval(gameLoop, gameSpeed);
 }
 
 startButton.addEventListener("click", () => {
   gameMenu.classList.add("hide");
-  start();
+  startGame();
 });
-// start();

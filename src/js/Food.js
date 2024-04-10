@@ -1,4 +1,4 @@
-import transformIntoPixels, { isSnakeFoodIntersecting } from "./functions.js";
+import transformIntoPixels from "./functions.js";
 
 class Food {
   constructor(cellSize) {
@@ -9,12 +9,17 @@ class Food {
       y: Math.floor(Math.random() * (this.cellSize - 0) + 0),
     };
   }
-  draw(gameBoard) {
+
+  removePreviousFoodElements() {
+    // this.randomPosition(snake);
     // remove any previous food elements in document object
     let previousFoods = document.querySelectorAll("#food");
     previousFoods.forEach((food) => {
       gameBoard.removeChild(food);
     });
+  }
+
+  draw(gameBoard) {
     let foodElement = document.createElement("div");
     foodElement.setAttribute("id", "food");
     foodElement.style.height = foodElement.style.width = transformIntoPixels(
