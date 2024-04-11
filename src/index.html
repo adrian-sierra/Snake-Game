@@ -22,10 +22,10 @@
           <p class="menu__option" id="settings-button">SETTINGS</p>
         </div>
         <div class="settings-container" id="settings">
-          <form class="settings-form" action="#">
+          <form id="settings-form" class="settings-form" action="#">
             <div class="settings-form__input">
               <label for="">Game Speed</label>
-              <div class="radio-input">
+              <div class="input-radio">
                 <div class="radio-group">
                   <input type="radio" value="slow" name="gameSpeed" />
                   <label for="gameSpeed">Slow</label>
@@ -42,15 +42,15 @@
             </div>
             <div class="settings-form__input">
               <label for="">Growing Rate</label>
-              <input type="number" min="1" max="5" />
+              <input class="input-growing" type="number" min="1" max="5" />
             </div>
             <div class="settings-form__input">
               <label for="">Food Color</label>
-              <input type="color" />
+              <input class="input-color" type="color" />
             </div>
             <div class="settings-form__input">
               <label for="">Snake Color</label>
-              <input type="color" />
+              <input class="input-color" type="color" />
             </div>
             <div class="settings-form__buttons">
               <button class="form-apply-button form-button" id="apply-button">
@@ -63,7 +63,7 @@
           </form>
         </div>
       </div>
-      <div class="controls">
+      <div class="controls hide">
         <div class="top-row button-row">
           <button class="controls__button" id="button-up" value="up"></button>
         </div>
