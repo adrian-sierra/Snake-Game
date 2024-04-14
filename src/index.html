@@ -27,33 +27,59 @@
               <label for="">Game Speed</label>
               <div class="input-radio">
                 <div class="radio-group">
-                  <input type="radio" value="slow" name="gameSpeed" />
-                  <label for="gameSpeed">Slow</label>
+                  <input
+                    type="radio"
+                    value="slow"
+                    id="speed-slow"
+                    name="gameSpeed"
+                  />
+                  <label for="speed-slow">Slow</label>
                 </div>
                 <div class="radio-group">
-                  <input type="radio" value="regular" name="gameSpeed" />
-                  <label for="gameSpeed">Regular</label>
+                  <input
+                    type="radio"
+                    value="regular"
+                    id="speed-regular"
+                    name="gameSpeed"
+                    checked="checked"
+                  />
+                  <label for="speed-regular">Regular</label>
                 </div>
                 <div class="radio-group">
-                  <input type="radio" value="fast" name="gameSpeed" />
-                  <label for="gameSpeed">Fast</label>
+                  <input
+                    type="radio"
+                    value="fast"
+                    id="speed-fast"
+                    name="gameSpeed"
+                  />
+                  <label for="speed-fast">Fast</label>
                 </div>
               </div>
             </div>
             <div class="settings-form__input">
-              <label for="">Growing Rate</label>
-              <input class="input-growing" type="number" min="1" max="5" />
+              <label class="growing-rate-label" for="">Growing Rate</label>
+              <input
+                id="growing-rate"
+                class="input-growing"
+                type="number"
+                min="1"
+                max="5"
+              />
             </div>
             <div class="settings-form__input">
-              <label for="">Food Color</label>
-              <input class="input-color" type="color" />
+              <label class="food-color-label" for="">Food Color</label>
+              <input id="food-color" class="input-color" type="color" />
             </div>
             <div class="settings-form__input">
-              <label for="">Snake Color</label>
-              <input class="input-color" type="color" />
+              <label class="snake-color-label" for="">Snake Color</label>
+              <input id="snake-color" class="input-color" type="color" />
             </div>
             <div class="settings-form__buttons">
-              <button class="form-apply-button form-button" id="apply-button">
+              <button
+                class="form-apply-button form-button"
+                id="apply-button"
+                type="submit"
+              >
                 Apply
               </button>
               <button class="form-cancel-button form-button" id="cancel-button">

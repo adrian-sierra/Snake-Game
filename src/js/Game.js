@@ -2,11 +2,11 @@
 import Food from "./Food.js";
 import Snake from "./Snake.js";
 import { isSnakeFoodIntersecting } from "./functions.js";
+import settings from "./Settings.js";
 
+const settingsButton = document.getElementById("settings-button");
 const gameMenu = document.querySelector(".menu");
 const startButton = document.getElementById("start-button");
-const settingsButton = document.getElementById("settings-button");
-const settingsMenu = document.getElementById("settings");
 const controlsDiv = document.querySelector(".controls");
 const controlButtons = document.querySelectorAll(".controls__button");
 
@@ -80,44 +80,7 @@ startButton.addEventListener("click", () => {
   startGame();
 });
 
-// function settings() {
-//   const applyButton = document.getElementById("apply-button");
-//   const cancelButton = document.getElementById("cancel-button");
-
-//   function handleApplyClick(e) {
-//     e.preventDefault();
-//   }
-
-//   function handleCancelClick() {
-//     gameMenu.classList.remove("hide");
-//     settingsMenu.classList.add("hide");
-//     console.log("cancel clicked");
-//   }
-
-//   applyButton.addEventListener("click", handleApplyClick);
-//   cancelButton.addEventListener("click", handleCancelClick);
-// }
-
 settingsButton.addEventListener("click", () => {
   gameMenu.classList.add("hide");
-  settingsMenu.classList.remove("hide");
-  // settings();
+  settings();
 });
-
-const settingsForm = document.getElementById("settings-form");
-const applyButton = document.getElementById("apply-button");
-const cancelButton = document.getElementById("cancel-button");
-
-function handleApplyClick(e) {
-  e.preventDefault();
-}
-
-function handleCancelClick() {
-  settingsForm.reset();
-  gameMenu.classList.remove("hide");
-  settingsMenu.classList.add("hide");
-  console.log("cancel clicked");
-}
-
-applyButton.addEventListener("click", handleApplyClick);
-cancelButton.addEventListener("click", handleCancelClick);
