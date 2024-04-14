@@ -1,6 +1,6 @@
 .settings-form:not(.hide) {
   display: grid;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .settings-form {
@@ -11,8 +11,29 @@
     display: grid;
     gap: 0.25rem;
 
-    .radio-input {
+    .input-radio {
       display: flex;
+    }
+
+    .input-growing {
+      padding: 0rem 0.5rem;
+      font-family: $fontFamily;
+      font-size: 1rem;
+
+      &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px hsl(200, 100%, 65%);
+      }
+    }
+    .input-color {
+      appearance: none;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+      background: none;
+      border: 0;
+      cursor: pointer;
+      width: 35px;
+      height: 35px;
     }
   }
   &__buttons {
