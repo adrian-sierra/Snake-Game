@@ -8,16 +8,24 @@ const settingsButton = document.getElementById("settings-button");
 const gameMenu = document.querySelector(".menu");
 const startButton = document.getElementById("start-button");
 const controlsDiv = document.querySelector(".controls");
-const controlButtons = document.querySelectorAll(".controls__button");
+
+let gameSettings = {
+  gameSpeed: 250,
+  growingRate: 1,
+  foodColor: "rgb(255, 38, 0)",
+  snakeColor: "rgb(0, 249, 0)",
+};
 
 function startGame() {
+  const controlButtons = document.querySelectorAll(".controls__button");
+
   let gameBoard = document.getElementById("gameBoard");
   let cellSize = Math.sqrt(gameBoard.offsetWidth);
-  let gameSpeed = 500;
-  let growingRate = 5;
+  let gameSpeed = gameSettings.gameSpeed;
+  let growingRate = gameSettings.growingRate;
 
-  const snake = new Snake(cellSize);
-  const food = new Food(cellSize);
+  const snake = new Snake(cellSize, gameSettings.snakeColor);
+  const food = new Food(cellSize, gameSettings.foodColor);
 
   function gameLoop() {
     food.removePreviousFoodElements();
@@ -82,5 +90,5 @@ startButton.addEventListener("click", () => {
 
 settingsButton.addEventListener("click", () => {
   gameMenu.classList.add("hide");
-  settings();
+  settings(gameSettings);
 });

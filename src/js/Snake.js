@@ -1,7 +1,8 @@
 import transformIntoPixels, { randomDirection } from "./functions.js";
 
 class Snake {
-  constructor(size) {
+  constructor(size, color) {
+    this.color = color;
     let sizeOfBoard = Math.pow(size, 2);
     this.size = size;
     this.position = {
@@ -12,6 +13,7 @@ class Snake {
     this.snakeParts = [{}];
     this.snakeHash = {};
     this.direction = randomDirection();
+    this;
   }
   fillSnakeParts() {
     let snakeList = document.querySelectorAll("#snake");
@@ -69,6 +71,7 @@ class Snake {
 
     let snakeElement = document.createElement("div");
     snakeElement.setAttribute("id", "snake");
+    snakeElement.style.backgroundColor = this.color;
     snakeElement.style.height = snakeElement.style.width = transformIntoPixels(
       this.size
     );
@@ -123,7 +126,7 @@ class Snake {
     // of the snake is already in the dict
     let snakeHead = this.snakeParts[0];
 
-    console.log(JSON.stringify(snakeHead));
+    // console.log(JSON.stringify(snakeHead));
     // console.log(this.snakeHash[JSON.stringify(snakeHead)]);
     return !this.snakeHash[JSON.stringify(snakeHead)];
   }

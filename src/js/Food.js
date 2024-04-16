@@ -1,9 +1,9 @@
 import transformIntoPixels from "./functions.js";
 
 class Food {
-  constructor(cellSize) {
+  constructor(cellSize, color) {
+    this.color = color;
     this.cellSize = cellSize;
-
     this.position = {
       x: Math.floor(Math.random() * (this.cellSize - 0) + 0),
       y: Math.floor(Math.random() * (this.cellSize - 0) + 0),
@@ -22,6 +22,7 @@ class Food {
   draw(gameBoard) {
     let foodElement = document.createElement("div");
     foodElement.setAttribute("id", "food");
+    foodElement.style.backgroundColor = this.color;
     foodElement.style.height = foodElement.style.width = transformIntoPixels(
       this.cellSize
     );
