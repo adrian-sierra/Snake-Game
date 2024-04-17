@@ -43,7 +43,7 @@ class Food {
       x: Math.floor(Math.random() * (this.cellSize - 0) + 0),
       y: Math.floor(Math.random() * (this.cellSize - 0) + 0),
     };
-    // console.log(JSON.stringify(positionObject));
+
     while (snake.snakeHash[JSON.stringify(positionObject)]) {
       positionObject.x = Math.floor(Math.random() * (this.cellSize - 0) + 0);
       positionObject.y = Math.floor(Math.random() * (this.cellSize - 0) + 0);

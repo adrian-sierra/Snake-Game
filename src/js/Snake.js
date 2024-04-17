@@ -13,7 +13,6 @@ class Snake {
     this.snakeParts = [{}];
     this.snakeHash = {};
     this.direction = randomDirection();
-    this;
   }
   fillSnakeParts() {
     let snakeList = document.querySelectorAll("#snake");
@@ -26,11 +25,9 @@ class Snake {
         x: snakeElement.offsetLeft / this.size,
         y: snakeElement.offsetTop / this.size,
       };
+      this.snakeHash[JSON.stringify(this.snakeParts[index])] = 1;
       // since the check is if the head of the snake (index 0 of snakeParts) is
       // intersecting with rest of positions in dict, we can skip this index
-      if (index !== 0) {
-        this.snakeHash[JSON.stringify(this.snakeParts[index])] = 1;
-      }
     });
   }
   removePreviousSnakeElements() {
@@ -118,17 +115,6 @@ class Snake {
       this.position.x >= 0 &&
       this.position.x < this.size
     );
-  }
-  isNotIntersectingSelf() {
-    // TODO - make much faster
-
-    // simple implementation where we return whether the head position
-    // of the snake is already in the dict
-    let snakeHead = this.snakeParts[0];
-
-    // console.log(JSON.stringify(snakeHead));
-    // console.log(this.snakeHash[JSON.stringify(snakeHead)]);
-    return !this.snakeHash[JSON.stringify(snakeHead)];
   }
 }
 export default Snake;

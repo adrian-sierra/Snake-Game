@@ -30,7 +30,17 @@ function startGame() {
   function gameLoop() {
     food.removePreviousFoodElements();
     food.draw(gameBoard);
-    if (snake.isWithinBounds() && snake.isNotIntersectingSelf()) {
+
+    let snakeHash = {};
+    let noDuplicate = true;
+    snake.snakeParts.forEach((part) => {
+      if (snakeHash[JSON.stringify(part)]) {
+        noDuplicate = false;
+      }
+      snakeHash[JSON.stringify(part)] = 1;
+    });
+
+    if (snake.isWithinBounds() && noDuplicate) {
       snake.removePreviousSnakeElements();
       snake.draw(gameBoard);
       snake.fillSnakeParts();
