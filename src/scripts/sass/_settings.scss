@@ -5,6 +5,7 @@
 
 .settings-form {
   //   text-align: center;
+  padding: 1rem;
   font-size: 1.125rem;
 
   &__input {
@@ -46,6 +47,7 @@
       padding: 0.25rem 0.5rem;
       font-family: $fontFamily;
       font-size: 1rem;
+      width: 50%;
 
       &:focus {
         outline: none;
@@ -65,7 +67,7 @@
     }
   }
   &__buttons {
-    padding-top: 0.5rem;
+    margin-top: 0.5rem;
     display: flex;
     gap: 0.5rem;
     justify-content: space-evenly;
@@ -74,7 +76,7 @@
       cursor: pointer;
       border: 0;
       padding: 0.25rem 0.5rem;
-      border-radius: 12.5px;
+      border-radius: 8.5px;
       text-transform: uppercase;
       font-family: $fontFamily;
       letter-spacing: 1px;
