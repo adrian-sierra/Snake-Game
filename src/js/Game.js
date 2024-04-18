@@ -5,9 +5,9 @@ import { isSnakeFoodIntersecting } from "./functions.js";
 import settings from "./Settings.js";
 
 const settingsButton = document.getElementById("settings-button");
-const gameMenu = document.querySelector(".menu");
+const gameMenu = document.getElementById("menu");
 const startButton = document.getElementById("start-button");
-const controlsDiv = document.querySelector(".controls");
+const controlsDiv = document.getElementById("controls");
 
 let gameSettings = {
   gameSpeed: 250,
@@ -17,9 +17,9 @@ let gameSettings = {
 };
 
 function startGame() {
-  const controlButtons = document.querySelectorAll(".controls__button");
+  const controlButtons = document.querySelectorAll(".controls-button");
 
-  let gameBoard = document.getElementById("gameBoard");
+  let gameBoard = document.getElementById("board");
   let cellSize = Math.sqrt(gameBoard.offsetWidth);
   let gameSpeed = gameSettings.gameSpeed;
   let growingRate = gameSettings.growingRate;
@@ -28,7 +28,6 @@ function startGame() {
   const food = new Food(cellSize, gameSettings.foodColor);
 
   function gameLoop() {
-    food.removePreviousFoodElements();
     food.draw(gameBoard);
 
     let snakeHash = {};
@@ -41,16 +40,13 @@ function startGame() {
     });
 
     if (snake.isWithinBounds() && noDuplicate) {
-      snake.removePreviousSnakeElements();
       snake.draw(gameBoard);
-      snake.fillSnakeParts();
     } else {
       endGame();
     }
     if (isSnakeFoodIntersecting(snake, food)) {
       snake.length += growingRate;
 
-      food.removePreviousFoodElements();
       food.randomPosition(snake);
       food.draw(gameBoard);
     }
@@ -80,7 +76,6 @@ function startGame() {
   }
 
   function endGame() {
-    // send alert if snake is outside of bounds or it is intersecting itself
     if (alert("Game over! Your score: " + snake.length)) {
     } else window.location.reload();
   }

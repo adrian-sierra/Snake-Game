@@ -72,7 +72,7 @@ svg {
   color: red;
 }
 
-#gameBoard {
+.game-board {
   background-color: hsl(0, 0%, 60%);
   width: 400px;
   height: 400px;
@@ -100,76 +100,72 @@ svg {
   margin-bottom: 5rem;
 }
 
-.controls:not(.hide) {
+.game-controls:not(.hide) {
   display: grid;
   gap: 0.625rem;
 }
 
-.controls {
+.game-controls {
   margin-top: 2.5rem;
   place-items: center;
 }
-.controls .middle-row {
+.game-controls .middle-row {
   display: grid;
   grid-auto-flow: column;
   gap: 0.625rem;
 }
-.controls .fake-button, .controls__button {
+.game-controls .fake-button,
+.game-controls .controls-button {
   box-shadow: 0 0 0 2.5px black;
   height: 45px;
   width: 45px;
   background-color: hsl(0, 0%, 60%);
   border: 0;
 }
-.controls__button {
+.game-controls .controls-button {
   background-image: url("../../../public/arrow.png");
   background-size: 27.5px;
   background-position: center;
   background-repeat: no-repeat;
   text-align: center;
-}
-.controls #button-up:hover,
-.controls #button-right:hover,
-.controls #button-down:hover,
-.controls #button-left:hover {
   cursor: pointer;
 }
-.controls #button-down:hover {
-  transform: scale(1.0315);
-}
-.controls #button-up {
+.game-controls .button-up {
   transform: rotate(180deg);
 }
-.controls #button-up:hover {
+.game-controls .button-up:hover {
   transform: rotate(180deg) scale(1.0315);
 }
-.controls #button-right {
-  transform: rotate(270deg);
-}
-.controls #button-right:hover {
-  transform: rotate(270deg) scale(1.0315);
-}
-.controls #button-left {
+.game-controls .button-left {
   transform: rotate(90deg);
 }
-.controls #button-left:hover {
+.game-controls .button-left:hover {
   transform: rotate(90deg) scale(1.0315);
 }
+.game-controls .button-right {
+  transform: rotate(270deg);
+}
+.game-controls .button-right:hover {
+  transform: rotate(270deg) scale(1.0315);
+}
+.game-controls .button-down:hover {
+  transform: scale(1.0315);
+}
 
-.menu:not(.hide) {
+.game-menu:not(.hide) {
   display: grid;
   gap: 1rem;
 }
 
-.menu {
+.game-menu {
   text-align: center;
   font-size: 1.5rem;
 }
-.menu__option {
+.game-menu .menu-option {
   cursor: pointer;
   position: relative;
 }
-.menu__option:hover {
+.game-menu .menu-option:hover {
   transform: scale(1.15);
 }
 
@@ -193,7 +189,7 @@ svg {
   position: absolute;
   content: "Invalid input";
   top: 25%;
-  right: 0;
+  right: 35%;
   font-size: 0.5em;
 }
 .settings-form__input .input-radio {
@@ -262,45 +258,46 @@ svg {
 }
 
 @media (max-width: 500px) {
-  #gameBoard {
-    width: 324px;
-    height: 324px;
-  }
   .game-title {
     font-size: 1.875rem;
     margin-bottom: 5rem;
   }
-  .menu {
+  .game-board {
+    width: 324px;
+    height: 324px;
+  }
+  .game-board .game-menu {
     font-size: 1.125rem;
   }
-  .controls {
-    margin-top: 1.75rem;
-  }
-  .controls .fake-button, .controls__button {
-    height: 35px;
-    width: 35px;
-  }
-  .controls__button {
-    background-size: 22.5px;
-  }
-  .settings-form:not(.hide) {
+  .game-board .settings-form:not(.hide) {
     display: grid;
     gap: 0.5rem;
   }
-  .settings-form {
+  .game-board .settings-form {
     font-size: 0.875rem;
   }
-  .settings-form .input-growing {
+  .game-board .settings-form .input-growing {
     padding: 0.125rem 0.25rem;
     font-family: "Bungee", sans-serif;
     font-size: 0.75rem;
   }
-  .settings-form .input-color {
+  .game-board .settings-form .input-color {
     width: 25px;
     height: 25px;
   }
-  .settings-form__buttons {
+  .game-board .settings-form__buttons {
     margin-top: 0.25rem;
+  }
+  .game-controls {
+    margin-top: 1.75rem;
+  }
+  .game-controls .fake-button,
+  .game-controls .controls-button {
+    height: 35px;
+    width: 35px;
+  }
+  .game-controls .controls-button {
+    background-size: 22.5px;
   }
 }
 body {

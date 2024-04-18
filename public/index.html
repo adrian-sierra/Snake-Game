@@ -15,117 +15,116 @@
     <title>Snake</title>
   </head>
   <body>
-    <div id="title" class="game-title">SNAKE</div>
-    <div class="game">
-      <div id="gameBoard">
-        <div class="menu">
-          <p class="menu__option" id="start-button">START</p>
-          <p class="menu__option" id="settings-button">SETTINGS</p>
-        </div>
-        <div class="settings-container hide" id="settings">
-          <form id="settings-form" class="settings-form" action="#">
-            <div class="settings-form__input">
-              <label for="">Game Speed</label>
-              <div class="input-radio">
-                <div class="radio-group">
-                  <input
-                    type="radio"
-                    value="slow"
-                    id="speed-slow"
-                    name="gameSpeed"
-                  />
-                  <label for="speed-slow">Slow</label>
-                </div>
-                <div class="radio-group">
-                  <input
-                    type="radio"
-                    value="regular"
-                    id="speed-regular"
-                    name="gameSpeed"
-                    checked="checked"
-                  />
-                  <label for="speed-regular">Regular</label>
-                </div>
-                <div class="radio-group">
-                  <input
-                    type="radio"
-                    value="fast"
-                    id="speed-fast"
-                    name="gameSpeed"
-                  />
-                  <label for="speed-fast">Fast</label>
+    <main>
+      <h1 class="game-title">SNAKE</h1>
+      <div class="game">
+        <div id="board" class="game-board">
+          <div id="menu" class="game-menu">
+            <p id="start-button" class="menu-option">START</p>
+            <p id="settings-button" class="menu-option">SETTINGS</p>
+          </div>
+          <div id="settings" class="game-settings hide">
+            <form id="form" class="settings-form" action="#">
+              <div class="settings-form__input">
+                <h2>Game Speed</h2>
+                <div class="input-radio">
+                  <div class="radio-group">
+                    <input
+                      type="radio"
+                      id="speed-slow"
+                      name="game-speed"
+                      value="slow"
+                    />
+                    <label for="speed-slow">Slow</label>
+                  </div>
+                  <div class="radio-group">
+                    <input
+                      type="radio"
+                      id="speed-regular"
+                      name="game-speed"
+                      value="regular"
+                      checked="checked"
+                    />
+                    <label for="speed-regular">Regular</label>
+                  </div>
+                  <div class="radio-group">
+                    <input
+                      type="radio"
+                      id="speed-fast"
+                      name="game-speed"
+                      value="fast"
+                    />
+                    <label for="speed-fast">Fast</label>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="settings-form__input">
-              <label class="growing-rate-label" for="">Growing Rate</label>
-              <input
-                id="growing-rate"
-                class="input-growing"
-                type="number"
-                value="1"
-                min="1"
-                max="10"
-              />
-            </div>
-            <div class="settings-form__input">
-              <label class="food-color-label" for="">Food Color</label>
-              <input
-                id="food-color"
-                class="input-color"
-                type="color"
-                value="#ff2600"
-              />
-            </div>
-            <div class="settings-form__input">
-              <label class="snake-color-label" for="">Snake Color</label>
-              <input
-                id="snake-color"
-                class="input-color"
-                type="color"
-                value="#00f900"
-              />
-            </div>
-            <div class="settings-form__buttons">
-              <button
-                class="form-apply-button form-button"
-                id="apply-button"
-                type="submit"
-              >
-                Apply
-              </button>
-              <button class="form-cancel-button form-button" id="cancel-button">
-                Cancel
-              </button>
-            </div>
-          </form>
+              <div class="settings-form__input">
+                <label class="growing-rate-label" for="growing-rate"
+                  >Growing Rate</label
+                >
+                <input
+                  type="number"
+                  value="1"
+                  id="growing-rate"
+                  class="input-growing"
+                  min="1"
+                  max="10"
+                />
+              </div>
+              <div class="settings-form__input">
+                <label class="food-color-label" for="food-color"
+                  >Food Color</label
+                >
+                <input
+                  type="color"
+                  id="food-color"
+                  class="input-color"
+                  value="#ff2600"
+                />
+              </div>
+              <div class="settings-form__input">
+                <label class="snake-color-label" for="snake-color"
+                  >Snake Color</label
+                >
+                <input
+                  type="color"
+                  id="snake-color"
+                  class="input-color"
+                  value="#00f900"
+                />
+              </div>
+              <div class="settings-form__buttons">
+                <button
+                  type="submit"
+                  id="apply-button"
+                  class="form-button form-apply-button"
+                >
+                  Apply
+                </button>
+                <button
+                  id="cancel-button"
+                  class="form-button form-cancel-button"
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div id="controls" class="game-controls hide">
+          <div class="controls-row top-row">
+            <button class="controls-button button-up" value="up"></button>
+          </div>
+          <div class="controls-row middle-row">
+            <button class="controls-button button-left" value="left"></button>
+            <div class="fake-button"></div>
+            <button class="controls-button button-right" value="right"></button>
+          </div>
+          <div class="controls-row bottom-row">
+            <button class="controls-button button-down" value="down"></button>
+          </div>
         </div>
       </div>
-      <div class="controls hide">
-        <div class="top-row button-row">
-          <button class="controls__button" id="button-up" value="up"></button>
-        </div>
-        <div class="middle-row button-row">
-          <button
-            class="controls__button"
-            id="button-left"
-            value="left"
-          ></button>
-          <div class="fake-button"></div>
-          <button
-            class="controls__button"
-            id="button-right"
-            value="right"
-          ></button>
-        </div>
-        <div class="bottom-row button-row">
-          <button
-            class="controls__button"
-            id="button-down"
-            value="down"
-          ></button>
-        </div>
-      </div>
-    </div>
+    </main>
   </body>
 </html>

@@ -1,13 +1,13 @@
-.menu:not(.hide) {
+.game-menu:not(.hide) {
   display: grid;
   gap: 1rem;
 }
 
-.menu {
+.game-menu {
   text-align: center;
   font-size: 1.5rem;
 
-  &__option {
+  .menu-option {
     cursor: pointer;
     position: relative;
 

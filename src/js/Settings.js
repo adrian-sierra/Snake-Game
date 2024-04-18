@@ -1,13 +1,12 @@
 export default function settings(gameSettings) {
-  const settingsForm = document.getElementById("settings-form");
+  const settingsForm = document.getElementById("form");
   const settingsMenu = document.getElementById("settings");
-  const gameMenu = document.querySelector(".menu");
+  const gameMenu = document.getElementById("menu");
   const applyButton = document.getElementById("apply-button");
   const cancelButton = document.getElementById("cancel-button");
 
   settingsMenu.classList.remove("hide");
 
-  settingsForm.reset();
   settingsValueReset();
 
   function showStartMenu() {
@@ -79,10 +78,10 @@ export default function settings(gameSettings) {
     e.preventDefault();
 
     const gameSpeed = document.querySelector(
-      'input[name="gameSpeed"]:checked'
+      'input[name="game-speed"]:checked'
     ).value;
     const gameBoardColor = window.getComputedStyle(
-      document.getElementById("gameBoard")
+      document.getElementById("board")
     ).backgroundColor;
     const growingRate = document.getElementById("growing-rate").value;
     const foodColor = convertToRGB(document.getElementById("food-color").value);
@@ -104,11 +103,10 @@ export default function settings(gameSettings) {
   }
 
   function handleCancelClick() {
+    settingsForm.reset();
     showStartMenu();
   }
 
   applyButton.addEventListener("click", handleApplyClick);
   cancelButton.addEventListener("click", handleCancelClick);
 }
-
-// settings();

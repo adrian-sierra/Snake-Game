@@ -10,9 +10,7 @@ class Food {
     };
   }
 
-  removePreviousFoodElements() {
-    // this.randomPosition(snake);
-    // remove any previous food elements in document object
+  removePreviousFoodElements(gameBoard) {
     let previousFoods = document.querySelectorAll("#food");
     previousFoods.forEach((food) => {
       gameBoard.removeChild(food);
@@ -20,6 +18,8 @@ class Food {
   }
 
   draw(gameBoard) {
+    this.removePreviousFoodElements(gameBoard);
+
     let foodElement = document.createElement("div");
     foodElement.setAttribute("id", "food");
     foodElement.style.backgroundColor = this.color;
@@ -36,9 +36,6 @@ class Food {
   }
 
   randomPosition(snake) {
-    // this random position method will be passed the snake object
-    // it will do a check to ensure that the new x,y position is
-    // not already a part in snakeHash
     let positionObject = {
       x: Math.floor(Math.random() * (this.cellSize - 0) + 0),
       y: Math.floor(Math.random() * (this.cellSize - 0) + 0),

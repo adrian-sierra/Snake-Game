@@ -1,46 +1,48 @@
 @media (max-width: 500px) {
-  #gameBoard {
-    width: 324px;
-    height: 324px;
-  }
   .game-title {
     font-size: 1.875rem;
     margin-bottom: 5rem;
   }
-  .menu {
-    font-size: 1.125rem;
+  .game-board {
+    width: 324px;
+    height: 324px;
+
+    .game-menu {
+      font-size: 1.125rem;
+    }
+
+    .settings-form:not(.hide) {
+      display: grid;
+      gap: 0.5rem;
+    }
+    .settings-form {
+      font-size: 0.875rem;
+
+      .input-growing {
+        padding: 0.125rem 0.25rem;
+        font-family: $fontFamily;
+        font-size: 0.75rem;
+      }
+      .input-color {
+        width: 25px;
+        height: 25px;
+      }
+
+      &__buttons {
+        margin-top: 0.25rem;
+      }
+    }
   }
-  .controls {
+  .game-controls {
     margin-top: 1.75rem;
 
     .fake-button,
-    &__button {
+    .controls-button {
       height: 35px;
       width: 35px;
     }
-    &__button {
+    .controls-button {
       background-size: 22.5px;
-    }
-  }
-  .settings-form:not(.hide) {
-    display: grid;
-    gap: 0.5rem;
-  }
-  .settings-form {
-    font-size: 0.875rem;
-
-    .input-growing {
-      padding: 0.125rem 0.25rem;
-      font-family: $fontFamily;
-      font-size: 0.75rem;
-    }
-    .input-color {
-      width: 25px;
-      height: 25px;
-    }
-
-    &__buttons {
-      margin-top: 0.25rem;
     }
   }
 }

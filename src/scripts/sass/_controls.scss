@@ -1,18 +1,20 @@
-.controls:not(.hide) {
+.game-controls:not(.hide) {
   display: grid;
   gap: $controlGap;
 }
 
-.controls {
+.game-controls {
   margin-top: 2.5rem;
   place-items: center;
+
   .middle-row {
     display: grid;
     grid-auto-flow: column;
     gap: $controlGap;
   }
+
   .fake-button,
-  &__button {
+  .controls-button {
     box-shadow: 0 0 0 2.5px black;
     height: $controlSize;
     width: $controlSize;
@@ -20,40 +22,34 @@
     border: 0;
   }
 
-  &__button {
+  .controls-button {
     background-image: url("../../../public/arrow.png");
     background-size: 27.5px;
     background-position: center;
     background-repeat: no-repeat;
     text-align: center;
+    cursor: pointer;
   }
 
-  #button-up:hover,
-  #button-right:hover,
-  #button-down:hover,
-  #button-left:hover {
-    cursor: pointer;
-    // box-shadow: 0px 0px 15px 2px rgba(96, 96, 96, 0.5);
-  }
-  #button-down:hover {
-    transform: scale(1.0315);
-  }
-  #button-up {
+  .button-up {
     transform: rotate(180deg);
     &:hover {
       transform: rotate(180deg) scale(1.0315);
     }
   }
-  #button-right {
+  .button-left {
+    transform: rotate(90deg);
+    &:hover {
+      transform: rotate(90deg) scale(1.0315);
+    }
+  }
+  .button-right {
     transform: rotate(270deg);
     &:hover {
       transform: rotate(270deg) scale(1.0315);
     }
   }
-  #button-left {
-    transform: rotate(90deg);
-    &:hover {
-      transform: rotate(90deg) scale(1.0315);
-    }
+  .button-down:hover {
+    transform: scale(1.0315);
   }
 }
