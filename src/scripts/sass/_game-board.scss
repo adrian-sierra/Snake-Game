@@ -2,9 +2,13 @@
   background-color: hsl(0, 0%, 60%);
   width: $boardDimension;
   height: $boardDimension;
+  -webkit-box-shadow: 0 0 0 5px black;
   box-shadow: 0 0 0 5px black;
   position: relative;
+  display: -ms-grid;
   display: grid;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   margin: 0 auto;
 }

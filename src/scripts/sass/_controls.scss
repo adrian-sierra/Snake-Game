@@ -1,4 +1,5 @@
 .game-controls:not(.hide) {
+  display: -ms-grid;
   display: grid;
   gap: $controlGap;
 }
@@ -8,6 +9,7 @@
   place-items: center;
 
   .middle-row {
+    display: -ms-grid;
     display: grid;
     grid-auto-flow: column;
     gap: $controlGap;
@@ -15,6 +17,9 @@
 
   .fake-button,
   .controls-button {
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    -webkit-box-shadow: 0 0 0 2.5px black;
     box-shadow: 0 0 0 2.5px black;
     height: $controlSize;
     width: $controlSize;
@@ -32,24 +37,42 @@
   }
 
   .button-up {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
     transform: rotate(180deg);
-    &:hover {
+    &:hover,
+    &:focus-visible {
+      -webkit-transform: rotate(180deg) scale(1.0315);
+      -ms-transform: rotate(180deg) scale(1.0315);
       transform: rotate(180deg) scale(1.0315);
     }
   }
   .button-left {
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
     transform: rotate(90deg);
-    &:hover {
+    &:hover,
+    &:focus-visible {
+      -webkit-transform: rotate(90deg) scale(1.0315);
+      -ms-transform: rotate(90deg) scale(1.0315);
       transform: rotate(90deg) scale(1.0315);
     }
   }
   .button-right {
+    -webkit-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
     transform: rotate(270deg);
-    &:hover {
+    &:hover,
+    &:focus-visible {
+      -webkit-transform: rotate(270deg) scale(1.0315);
+      -ms-transform: rotate(270deg) scale(1.0315);
       transform: rotate(270deg) scale(1.0315);
     }
   }
-  .button-down:hover {
+  .button-down:hover,
+  .button-down:focus-visible {
+    -webkit-transform: scale(1.0315);
+    -ms-transform: scale(1.0315);
     transform: scale(1.0315);
   }
 }

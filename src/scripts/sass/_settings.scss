@@ -1,14 +1,15 @@
 .settings-form:not(.hide) {
+  display: -ms-grid;
   display: grid;
   gap: 1rem;
 }
 
 .settings-form {
-  //   text-align: center;
   padding: 1rem;
   font-size: 1.125rem;
 
   &__input {
+    display: -ms-grid;
     display: grid;
     gap: 0.25rem;
 
@@ -25,11 +26,14 @@
 
     .input-radio {
       margin: 0.25rem 0;
+      display: -webkit-box;
+      display: -ms-flexbox;
       display: flex;
       gap: 0.5rem;
 
       label {
         position: relative;
+        -webkit-box-shadow: 0 0 0 2px black;
         box-shadow: 0 0 0 2px black;
         padding: 0.25rem 0.5rem;
         cursor: pointer;
@@ -49,9 +53,11 @@
       font-size: 1rem;
       width: 50%;
 
-      &:focus {
+      &:focus,
+      &:focus-visible {
         outline: none;
         border-color: hsl(200, 100%, 65%);
+        -webkit-box-shadow: 0 0 0 1.5px hsl(200, 100%, 65%);
         box-shadow: 0 0 0 1.5px hsl(200, 100%, 65%);
       }
     }
@@ -68,8 +74,12 @@
   }
   &__buttons {
     margin-top: 0.5rem;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     gap: 0.5rem;
+    -webkit-box-pack: space-evenly;
+    -ms-flex-pack: space-evenly;
     justify-content: space-evenly;
 
     .form-button {
@@ -80,8 +90,12 @@
       text-transform: uppercase;
       font-family: $fontFamily;
       letter-spacing: 1px;
+      -webkit-box-shadow: 0 0 0 2px black;
       box-shadow: 0 0 0 2px black;
-      &:hover {
+      &:hover,
+      &:focus-visible {
+        -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
         transform: scale(1.05);
       }
     }

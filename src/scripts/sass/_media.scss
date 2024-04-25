@@ -12,6 +12,7 @@
     }
 
     .settings-form:not(.hide) {
+      display: -ms-grid;
       display: grid;
       gap: 0.5rem;
     }

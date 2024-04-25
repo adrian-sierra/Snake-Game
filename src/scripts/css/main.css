@@ -116,6 +116,7 @@ svg {
 }
 .game-controls .fake-button,
 .game-controls .controls-button {
+  touch-action: manipulation;
   box-shadow: 0 0 0 2.5px black;
   height: 45px;
   width: 45px;
@@ -133,22 +134,23 @@ svg {
 .game-controls .button-up {
   transform: rotate(180deg);
 }
-.game-controls .button-up:hover {
+.game-controls .button-up:hover, .game-controls .button-up:focus-visible {
   transform: rotate(180deg) scale(1.0315);
 }
 .game-controls .button-left {
   transform: rotate(90deg);
 }
-.game-controls .button-left:hover {
+.game-controls .button-left:hover, .game-controls .button-left:focus-visible {
   transform: rotate(90deg) scale(1.0315);
 }
 .game-controls .button-right {
   transform: rotate(270deg);
 }
-.game-controls .button-right:hover {
+.game-controls .button-right:hover, .game-controls .button-right:focus-visible {
   transform: rotate(270deg) scale(1.0315);
 }
-.game-controls .button-down:hover {
+.game-controls .button-down:hover,
+.game-controls .button-down:focus-visible {
   transform: scale(1.0315);
 }
 
@@ -165,7 +167,7 @@ svg {
   cursor: pointer;
   position: relative;
 }
-.game-menu .menu-option:hover {
+.game-menu .menu-option:hover, .game-menu .menu-option:focus-visible {
   transform: scale(1.15);
 }
 
@@ -216,7 +218,7 @@ svg {
   font-size: 1rem;
   width: 50%;
 }
-.settings-form__input .input-growing:focus {
+.settings-form__input .input-growing:focus, .settings-form__input .input-growing:focus-visible {
   outline: none;
   border-color: hsl(200, 100%, 65%);
   box-shadow: 0 0 0 1.5px hsl(200, 100%, 65%);
@@ -247,7 +249,7 @@ svg {
   letter-spacing: 1px;
   box-shadow: 0 0 0 2px black;
 }
-.settings-form__buttons .form-button:hover {
+.settings-form__buttons .form-button:hover, .settings-form__buttons .form-button:focus-visible {
   transform: scale(1.05);
 }
 .settings-form__buttons .form-apply-button {
