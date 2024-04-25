@@ -123,7 +123,7 @@ svg {
   border: 0;
 }
 .game-controls .controls-button {
-  background-image: url("../../../public/arrow.png");
+  background-image: url("../../assets/images/arrow.png");
   background-size: 27.5px;
   background-position: center;
   background-repeat: no-repeat;
