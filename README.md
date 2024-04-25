@@ -14,8 +14,8 @@ Food Color: Customize the color of the food.
 End of game alert displaying final score of the player + restart game on closing of alert.
 
 Technologies Used:
-HTML
-CSS (Sass)
+HTML,
+CSS (Sass),
 JavaScript (Vanilla)
 
 Credits:
